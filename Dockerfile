@@ -5,13 +5,13 @@
 # Name.......: Dockerfile
 # Author.....: Stefan Oehrli (oes) stefan.oehrli@trivadis.com
 # Editor.....: Stefan Oehrli
-# Date.......: 2018.09.19
+# Date.......: 2020.09.03
 # Revision...: 1.0
-# Purpose....: Dockerfile to build a JSON utilities image
+# Purpose....: Dockerfile to build a utilities image with static sslscan
 # Notes......: --
-# Reference..: --
-# License....: Licensed under the Universal Permissive License v 1.0 as
-#              shown at http://oss.oracle.com/licenses/upl.
+# Reference..: Based on the idea from https://github.com/treibholz/docker-sslscan
+#              but modified to build sslscan 2 (latest)
+# License....: Licensed is licensed under the GNU General Public License v3.0
 # ----------------------------------------------------------------------
 # Modified...:
 # see git revision history for more information on changes/updates
@@ -51,6 +51,7 @@ FROM scratch
 # ----------------------------------------------------------------------
 LABEL maintainer="stefan.oehrli@trivadis.com"
 
+# copy required files from base image 
 COPY --from=0 /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
 COPY --from=0 /lib/libz.so.1 /lib/libz.so.1
 COPY --from=0 /etc/passwd /etc/passwd
